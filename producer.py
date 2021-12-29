@@ -6,12 +6,7 @@ KAFKA_PRODUCER_CONFIGURATION = {
     'sasl.username': 'admin',
     'sasl.password': 'admin-secret',
     'sasl.mechanism':'PLAIN'
-    #'linger.ms': 0,
-    #'compression.type': None,
-    #'request.required.acks': 1,
-    #'retries': 1,
-    #'max.in.flight.requests.per.connection': 1
-    }
+}
 
 producer = Producer(KAFKA_PRODUCER_CONFIGURATION)
 

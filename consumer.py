@@ -7,10 +7,23 @@ def main():
 
     subscribe_topics = ["test"]
     print('Starting consumer on topic ' + str(subscribe_topics))
-    c = Consumer({'bootstrap.servers': KAFKA_BROKER_URL,'group.id': 'testgroup', 'security.protocol' : 'SASL_PLAINTEXT', 'sasl.username': 'admin', 'sasl.password': 'admin-secret', 'sasl.mechanism':'PLAIN',
-                  'default.topic.config': {'auto.offset.reset': 'smallest'}, 'session.timeout.ms': KAFKA_CONSUMER_SESSION_TIMEOUT,
-                  'queued.max.messages.kbytes': KAFKA_QUEUED_MAX_MESSAGE_KB})
-    print("Subscribing to npsservice topic")
+    c = Consumer(
+        {
+            'bootstrap.servers': KAFKA_BROKER_URL,
+            'group.id': 'testgroup', 
+            'security.protocol' : 'SASL_PLAINTEXT', 
+            'sasl.username': 'admin', 
+            'sasl.password': 'admin-secret', 
+            'sasl.mechanism':'PLAIN',
+            'default.topic.config': {
+                'auto.offset.reset': 'smallest'
+            },
+            'session.timeout.ms': KAFKA_CONSUMER_SESSION_TIMEOUT,
+            'queued.max.messages.kbytes': KAFKA_QUEUED_MAX_MESSAGE_KB
+        }
+    )
+
+    print("Subscribing to topic")
     c.subscribe(subscribe_topics)
     running = True
 
